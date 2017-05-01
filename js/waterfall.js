@@ -121,10 +121,10 @@
 		 */
 		resize: function() {
 			var self = this;
-			self.wrapWith = self.getElW(self.container);
-			self.columnWidth = (self.options.columnWidth > 0 && self.options.columnWidth < self.wrapWith) ? self.options.columnWidth : self.wrapWith - 2 * self.gutter;
+			self.wrapWidth = self.getElW(self.container);
+			self.columnWidth = (self.options.columnWidth > 0 && self.options.columnWidth < self.wrapWidth) ? self.options.columnWidth : self.wrapWidth - 2 * self.gutter;
 			//当前有多少列
-			self.column = Math.floor((self.wrapWith + self.gutter) / (self.columnWidth + self.gutter));
+			self.column = Math.floor((self.wrapWidth + self.gutter) / (self.columnWidth + self.gutter));
 			self.waitImg(self.element, function() {
 				//计算当前容器内部的items
 				self.caculateAllItems();
@@ -195,8 +195,8 @@
 			for(var i = 0, len = items.length; i < len; i++) {
 				if(i < self.column) {
 					//这个时候，进来的都是第一行内容，无需计算,需要初始化列的高度数组
-					cosHeightArray[i] = self.getElH(items[i]) + self.gutter;
 					self.setItem(items[i], i * self.columnWidth + i * self.gutter, 0);
+                    cosHeightArray[i] = self.getElH(items[i]) + self.gutter;
 				} else {
 					self.appendItem(items[i]);
 				}

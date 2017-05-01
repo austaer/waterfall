@@ -11,43 +11,43 @@
     <script src="js/waterfall.js"></script>
     <script>
         //拓展瀑布流类库的用法示例
-        var myWaterFlow = WaterfallFlow.flow.extend({
-            /**
-             * @description 实现这个方法,可以在这个方法里面增加自己想要做的事情
-             * 这个方法默认初始化就会调用
-             */
-            doExtendJob: function() {
-                console.log("doMyjob");
-                this.listenScroll();
-            },
-            /**
-             * @description 自己拓展的加载更多
-             */
-            loadMore: function() {
-                var self = this;
-                console.log("加载更多");
-                //这里模拟添加效果,500ms后调用load api添加一个元素
-                setTimeout(function(){
-                    self.load('<div class="grid-item"><a class="demo-img"href="https://github.com/dailc"><img src="https://dailc.github.io/staticResource/blog/hybrid/img_hybrid_base_hybridInfo_1.jpg"></a><h3 class="demo-title"><a href="https://github.com/dailc">Hybrid示例应用</a></h3><p>技术分类：js Hybrid模式</p><p>混合开发，原生容器，h5+js进行业务功能开发，提升开发效率<a href="https://github.com/dailc">源代码<i class="icon icon-code"></i></a></p></div>');
-                    self.load('<div class="grid-item"><a class="demo-img"href="https://github.com/dailc"><img src="https://dailc.github.io/staticResource/blog/hybrid/img_hybrid_base_hybridInfo_1.jpg"></a><h3 class="demo-title"><a href="https://github.com/dailc">Hybrid示例应用</a></h3><p>技术分类：js Hybrid模式</p><p>混合开发，原生容器，h5+js进行业务功能开发，提升开发效率<a href="https://github.com/dailc">源代码<i class="icon icon-code"></i></a></p></div>');
-                },500);
-            },
-            /**
-             * @description 监听滑动
-             */
-            listenScroll: function() {
-                var self = this;
-                //增加滑动监听
-                window.addEventListener('scroll', function() {
-                    var scrollTop = getScrollTop();
-                    var winHeight = getWindowHeight();
-                    var scrollHeight = getScrollHeight();
-                    if(scrollTop + winHeight >= scrollHeight) {
-                        self.loadMore();
-                    }
-                });
-            }
-        });
+        // var myWaterFlow = WaterfallFlow.flow.extend({
+            // /**
+            //  * @description 实现这个方法,可以在这个方法里面增加自己想要做的事情
+            //  * 这个方法默认初始化就会调用
+            //  */
+            // doExtendJob: function() {
+            //     console.log("doMyjob");
+            //     this.listenScroll();
+            // },
+            // /**
+            //  * @description 自己拓展的加载更多
+            //  */
+            // loadMore: function() {
+            //     var self = this;
+            //     console.log("加载更多");
+            //     //这里模拟添加效果,500ms后调用load api添加一个元素
+            //     setTimeout(function(){
+            //         self.load('<div class="grid-item"><a class="demo-img"href="https://github.com/dailc"><img src="https://dailc.github.io/staticResource/blog/hybrid/img_hybrid_base_hybridInfo_1.jpg"></a><h3 class="demo-title"><a href="https://github.com/dailc">Hybrid示例应用</a></h3><p>技术分类：js Hybrid模式</p><p>混合开发，原生容器，h5+js进行业务功能开发，提升开发效率<a href="https://github.com/dailc">源代码<i class="icon icon-code"></i></a></p></div>');
+            //         self.load('<div class="grid-item"><a class="demo-img"href="https://github.com/dailc"><img src="https://dailc.github.io/staticResource/blog/hybrid/img_hybrid_base_hybridInfo_1.jpg"></a><h3 class="demo-title"><a href="https://github.com/dailc">Hybrid示例应用</a></h3><p>技术分类：js Hybrid模式</p><p>混合开发，原生容器，h5+js进行业务功能开发，提升开发效率<a href="https://github.com/dailc">源代码<i class="icon icon-code"></i></a></p></div>');
+            //     },500);
+            // },
+            // /**
+            //  * @description 监听滑动
+            //  */
+            // listenScroll: function() {
+            //     var self = this;
+            //     //增加滑动监听
+            //     window.addEventListener('scroll', function() {
+            //         var scrollTop = getScrollTop();
+            //         var winHeight = getWindowHeight();
+            //         var scrollHeight = getScrollHeight();
+            //         if(scrollTop + winHeight >= scrollHeight) {
+            //             self.loadMore();
+            //         }
+            //     });
+            // }
+        // });
         /**
          * @description 获取滚动条在Y轴上的滚动距离
          * @return {Number} 返回具体距离
@@ -106,10 +106,10 @@
                 //记录添加的数据
                 var index = 0;
                 //如果需要适配手机端，可以修改宽度
-                var flow = new myWaterFlow('.grid-container', {
+                var flow = new WaterfallFlow.flow('.grid-container', {
                     gridSelector: '.grid',
                     itemSelector: '.grid-item',
-                    columnWidth: 240,
+                    columnWidth: 180,
                     gutter: 20,
                     loadSuccess: function(self, isInit) {
                         //console.log("success");
@@ -129,7 +129,7 @@
             getHtmlByContent: function(content) {
                 var html = '';
                 var litemplate =
-                    '<div class="grid-item"><a class="demo-img"href="{{demoLink}}"><img src="{{imgLink}}"></a><h3 class="demo-title"><a href="{{demoLink}}">{{title}}</a></h3><p>技术分类：{{relevant}}</p><p>{{description}}<a href="{{codeLink}}">&nbsp;&nbsp;源代码&nbsp;&nbsp;<i class="icon icon-code"></i></a></p></div>';
+                    '<div class="grid-item"><a class="demo-img"href="{{demoLink}}"><img src="{{imgLink}}"></a><h3 class="demo-title"><a href="{{demoLink}}">{{title}}</a></h3><p>標題：{{relevant}}</p><p>{{description}}<a href="{{codeLink}}">&nbsp;&nbsp;more...&nbsp;&nbsp;<i class="icon icon-code"></i></a></p></div>';
                 for(var i = 0, len = content.length; i < len; i++) {
                     var tmp = content[i];
                     html += litemplate.replace(/\{\{demoLink\}\}/g, tmp.demoLink)
