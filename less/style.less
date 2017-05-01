@@ -1,0 +1,89 @@
+
+@gridItemWidth: 150px; 
+@gridItemBgColor: rgb(218, 201, 193);
+@gridH3FontSize: 18px;
+@gridH3PSize: 14px;
+
+.animate(@sec) {
+    text-decoration: none;
+    transition: @sec ease;    
+}
+
+body {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/*样式只是用来美化效果而已*/
+.container {
+    width: 100%;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px
+}
+
+a {
+    .animate(0.5s);
+    :focus, :hover {
+        .animate(0.5s);
+    }
+}
+
+/*
+ * demo grid布局
+ */
+
+.grid {
+    .grid-item {
+        /*
+        * 因为高度是与宽度相关的，所以手动设置item宽度，避免计算误差
+        * 这点在某些布局里比较重要 
+        */
+        width: @gridItemWidth;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        background-color: @gridItemBgColor;
+        transition: 0.5s ease;
+        -webkit-transition: 0.5s ease;
+        -moz-transition: 0.5s ease;
+        -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+        -moz-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+
+        img {
+            width: 100%;
+        }
+        /*
+        * item里的内容样式
+        */
+        h3, p{
+
+            margin: 0;
+            padding: 0 8px;
+        }
+
+        h3 {
+            margin: 10px 0;
+            font-size: @gridH3FontSize;
+        }
+
+        p {
+            margin-top: 5px;
+            font-size: @gridH3PSize;
+        }
+
+        .icon-code:before {
+            content: '</>';
+        }
+    }
+    .grid-item:hover {
+        transition: 0.5s ease;
+        -webkit-transition: 0.5s ease;
+        -moz-transition: 0.5s ease;
+        -webkit-box-shadow: 0px 2px 30px 0px rgba(0, 0, 0, 0.67);
+        -moz-box-shadow: 0px 2px 30px 0px rgba(0, 0, 0, 0.67);
+        box-shadow: 0px 2px 30px 0px rgba(0, 0, 0, 0.67);
+    }
+}
