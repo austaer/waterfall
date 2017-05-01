@@ -1,8 +1,19 @@
 
 @gridItemWidth: 180; 
-@gridItemBgColor: rgb(218, 201, 193);
+@gridItemBgColor: rgb(250, 212, 147);
 @gridH3FontSize: 18;
 @gridH3PSize: 14;
+@gridItemBorder: 1px solid rgba(55, 37, 15, 0.4);
+
+@bodyBgStartColor: rgba(215, 154, 109, 1.0);
+@bodyBgEndColor: rgba(218, 158, 95, 0.8);
+
+.bodyBgColor() {
+    background: radial-gradient(center, ellipse cover, @bodyBgStartColor 0%, @bodyBgEndColor 100%);
+    background: -moz-radial-gradient(center, ellipse cover, @bodyBgStartColor 0%, @bodyBgEndColor 100%);
+    background: -webkit-radial-gradient(center, ellipse cover, @bodyBgStartColor 0%, @bodyBgEndColor 100%);
+    background: -o-radial-gradient(center, ellipse cover, @bodyBgStartColor 0%, @bodyBgEndColor 100%);
+}
 
 .animate(@sec) {
     text-decoration: none;
@@ -12,6 +23,7 @@
 body {
     max-width: 900px;
     margin: 0 auto;
+    .bodyBgColor();
 }
 
 /*样式只是用来美化效果而已*/
@@ -43,7 +55,7 @@ a {
         width: @gridItemWidth;
         margin-bottom: 20px;
         padding-bottom: 10px;
-        border: 1px solid rgba(0, 0, 0, 0.3);
+        border: @gridItemBorder;
         background-color: @gridItemBgColor;
         transition: 0.5s ease;
         -webkit-transition: 0.5s ease;

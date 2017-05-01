@@ -1,6 +1,10 @@
 body {
   max-width: 900px;
   margin: 0 auto;
+  background: radial-gradient(center, ellipse cover, #d79a6d 0%, rgba(218, 158, 95, 0.8) 100%);
+  background: -moz-radial-gradient(center, ellipse cover, #d79a6d 0%, rgba(218, 158, 95, 0.8) 100%);
+  background: -webkit-radial-gradient(center, ellipse cover, #d79a6d 0%, rgba(218, 158, 95, 0.8) 100%);
+  background: -o-radial-gradient(center, ellipse cover, #d79a6d 0%, rgba(218, 158, 95, 0.8) 100%);
 }
 /*样式只是用来美化效果而已*/
 .container {
@@ -30,8 +34,8 @@ a :hover {
   width: 180;
   margin-bottom: 20px;
   padding-bottom: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  background-color: #dac9c1;
+  border: 1px solid rgba(55, 37, 15, 0.4);
+  background-color: #fad493;
   transition: 0.5s ease;
   -webkit-transition: 0.5s ease;
   -moz-transition: 0.5s ease;
